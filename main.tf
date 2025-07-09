@@ -9,16 +9,6 @@ data "aws_availability_zones" "available" {
 
 locals {
   default_amis = var.use_default ? tomap({
-    "ubuntu1804" = {
-      owners      = ["099720109477"]
-      most_recent = true
-      filters = {
-        name                = ["ubuntu-minimal/images/*/ubuntu-bionic-18.04-*"]
-        virtualization-type = ["hvm"]
-        root-device-type    = ["ebs"]
-        architecture        = ["x86_64"]
-      }
-    }
     "amazonlinux2" = {
       owners      = ["amazon"]
       most_recent = true
@@ -30,7 +20,7 @@ locals {
       }
     }
     "ubuntu2004" = {
-      owners      = ["099720109477"]
+      owners      = ["amazon"]
       most_recent = true
       filters = {
         name                = ["ubuntu/images/*/ubuntu-focal-20.04-amd64-*"]
@@ -40,7 +30,7 @@ locals {
       }
     }
     "ubuntu2204" = {
-      owners      = ["099720109477"]
+      owners      = ["amazon"]
       most_recent = true
       filters = {
         name                = ["ubuntu/images/*/ubuntu-jammy-22.04-*"]
@@ -60,10 +50,30 @@ locals {
       }
     }
     "ubuntu2004-arm" = {
-      owners      = ["099720109477"]
+      owners      = ["amazon"]
       most_recent = true
       filters = {
         name                = ["ubuntu/images/*/ubuntu-focal-20.04-arm64-*"]
+        virtualization-type = ["hvm"]
+        root-device-type    = ["ebs"]
+        architecture        = ["arm64"]
+      }
+    }
+    "ubuntu2204-arm" = {
+      owners      = ["amazon"]
+      most_recent = true
+      filters = {
+        name                = ["ubuntu/images/*/ubuntu-jammy-22.04-arm64-*"]
+        virtualization-type = ["hvm"]
+        root-device-type    = ["ebs"]
+        architecture        = ["arm64"]
+      }
+    }
+    "amazonlinux2-arm" = {
+      owners      = ["amazon"]
+      most_recent = true
+      filters = {
+        name                = ["amzn2-ami-kernel-*hvm*-gp*", "amzn2-ami-hvm*-gp*"]
         virtualization-type = ["hvm"]
         root-device-type    = ["ebs"]
         architecture        = ["arm64"]
