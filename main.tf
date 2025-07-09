@@ -73,7 +73,7 @@ locals {
       owners      = ["amazon"]
       most_recent = true
       filters = {
-        name                = ["amzn2-ami-kernel-arm64-*hvm*-gp*", "amzn2-ami-arm64-hvm*-gp*"]
+        name                = ["amzn2-ami-kernel-*hvm*-gp*", "amzn2-ami-hvm*-gp*"]
         virtualization-type = ["hvm"]
         root-device-type    = ["ebs"]
         architecture        = ["arm64"]
